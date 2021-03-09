@@ -1,5 +1,5 @@
 /**
- * This is exercise
+ * This is exercise 2.2.5
  */
 import javax.swing.JOptionPane;
 public class DoubleNumbers {
