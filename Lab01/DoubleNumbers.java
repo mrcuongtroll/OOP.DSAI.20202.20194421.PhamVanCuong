@@ -19,9 +19,10 @@ public class DoubleNumbers {
 		double product = num1*num2;
 		double quotient = num1/num2;
 
-		JOptionPane.showMessageDialog(null, sum, "The sum of two numbers", JOptionPane.INFORMATION_MESSAGE);
-		JOptionPane.showMessageDialog(null, difference, "The difference of two numbers", JOptionPane.INFORMATION_MESSAGE);
-		JOptionPane.showMessageDialog(null, product, "The product of two numbers", JOptionPane.INFORMATION_MESSAGE);
-		JOptionPane.showMessageDialog(null, quotient, "The quotient of two numbers", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(null, "You input two numbers: " + Double.toString(num1) + " and " + Double.toString(num2) + "\n"
+				+ "Their sum is: " + Double.toString(sum) + "\n"
+				+ "Their difference is: " + Double.toString(difference) + "\n"
+				+ "Their product is: " + Double.toString(product) + "\n"
+				+ "Their quotient is: " + Double.toString(quotient), "Solution", JOptionPane.INFORMATION_MESSAGE);
 	}
 }
