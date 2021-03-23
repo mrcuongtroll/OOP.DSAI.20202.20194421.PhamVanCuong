@@ -46,7 +46,7 @@ public class DigitalVideoDisc {
 		this.cost = cost;
 	}
 	
-	public boolean equals(DigitalVideoDisc disc) {
+	public boolean isEquals(DigitalVideoDisc disc) {
 		return (this.title == disc.getTitle());
 	}
 	
