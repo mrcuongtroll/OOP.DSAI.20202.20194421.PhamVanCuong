@@ -25,6 +25,10 @@ public class DigitalVideoDisc {
 	public int getID() {
 		return id;
 	}
+	public Object[] getDetail() {
+		Object[] detail = {this.getID(), this.getTitle(), this.getCategory(), this.getDirector(), this.getLength(), this.getCost()};
+		return detail;
+	}
 	public DigitalVideoDisc(String title) {
 		this.title = title;
 		this.id = nbDigitalVideoDiscs;
