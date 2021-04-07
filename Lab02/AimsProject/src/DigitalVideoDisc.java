@@ -50,4 +50,8 @@ public class DigitalVideoDisc {
 		return (this.title == disc.getTitle());
 	}
 	
+//	public void setTitle(String title) {
+//		this.title = title;
+//		return;
+//	}
 }
