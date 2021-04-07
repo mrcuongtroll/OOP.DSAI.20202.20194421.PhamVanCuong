@@ -56,8 +56,10 @@ public class Cart {
 	}
 	
 	public void removeDigitalVideoDisc(DigitalVideoDisc disc) {
+		boolean found = false;
 		for (int i = 0; i < qtyOrdered; i++) {
 			if (itemsOrdered[i].isEquals(disc)) {
+				found = true;
 				qtyOrdered--;
 				System.out.println("The disc " + disc.getTitle() + " has been removed from the cart.");
 				for (int j = i; j < qtyOrdered; j++) {
@@ -66,6 +68,9 @@ public class Cart {
 				itemsOrdered[qtyOrdered] = null;
 				break;
 			}
+		}
+		if (found == false) {
+			System.out.println("The disc " + disc.getTitle() + " is not in the cart.");
 		}
 	}
 	
