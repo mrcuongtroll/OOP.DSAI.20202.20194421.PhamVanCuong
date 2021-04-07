@@ -19,7 +19,13 @@ public class CartTest {
 		//Test the print method
 		cart.print();
 		//TODO: Test the search method here
-				
+		cart.addDigitalVideoDisc(dvd2);
+		cart.search(1);
+		cart.removeDigitalVideoDisc(dvd3);
+		cart.search(2);
+		cart.addDigitalVideoDisc(dvd1);
+		cart.search("The Lion King");
+		cart.search("Aladin");
 	}
 
 }
