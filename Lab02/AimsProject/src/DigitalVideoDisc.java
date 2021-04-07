@@ -63,7 +63,6 @@ public class DigitalVideoDisc {
 		return (this.title == disc.getTitle());
 	}
 	
- feature/search-cart
 	public boolean search(String title) {
 		return this.title == title;
 	}
