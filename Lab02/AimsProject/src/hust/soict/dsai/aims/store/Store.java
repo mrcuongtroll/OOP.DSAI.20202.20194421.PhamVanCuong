@@ -1,4 +1,7 @@
+package hust.soict.dsai.aims.store;
 import java.util.Arrays;
+
+import hust.soict.dsai.aims.disc.DigitalVideoDisc;
 
 public class Store {
 	//each element of itemsInStore will be in the form of {DigitalVideoDisc disc, int quantity}
