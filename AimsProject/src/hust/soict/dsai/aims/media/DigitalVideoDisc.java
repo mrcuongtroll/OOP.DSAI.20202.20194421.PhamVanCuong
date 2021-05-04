@@ -1,20 +1,17 @@
 package hust.soict.dsai.aims.media;
 
-public class DigitalVideoDisc extends Media {
-	private String director;
-	private int length;
-
-	public String getDirector() {
-		return director;
-	}
-	public int getLength() {
-		return length;
-	}
+public class DigitalVideoDisc extends Disc implements Playable {
 
 	public Object[] getDetail() {
 		Object[] detail = {this.getID(), this.getTitle(), this.getCategory(), this.getDirector(), this.getLength(), this.getCost()};
 		return detail;
 	}
+	
+	public void play() {
+		System.out.println("Playing DVD: " + this.getTitle());
+		System.out.println("DVD length: " + this.getLength());
+	}
+	
 	public DigitalVideoDisc(String title) {
 		super(title);
 	}
@@ -22,13 +19,10 @@ public class DigitalVideoDisc extends Media {
 		super(title, category, cost);
 	}
 	public DigitalVideoDisc(String title, String category, String director, float cost) {
-		super(title, category, cost);
-		this.director = director;
+		super(title, category, director, cost);
 	}
 	public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
-		super(title, category, cost);
-		this.director = director;
-		this.length = length;
+		super(title, category, director, length, cost);
 	}
 	
 //	public void setTitle(String title) {
