@@ -13,16 +13,23 @@ public class Cart {
 			if (this.itemsOrdered.size() == MAX_NUMBERS_ORDERED) {
 				System.out.println("The cart is full.");
 				break;
-			} else {
+			} else if (!this.itemsOrdered.contains(medium)) {
 				this.itemsOrdered.add(medium);
 				System.out.println(medium.getTitle() + " has beed added to the cart.");
+			} else {
+				System.out.println(medium.getTitle() + " is already in the cart.");
 			}
 		}
 	}
 	
 	public boolean removeMedia(Media medium) {
-		System.out.println(medium.getTitle() + " has been removed from the cart.");
-		return this.itemsOrdered.remove(medium);
+		if (this.itemsOrdered.remove(medium)) {
+			System.out.println(medium.getTitle() + " has been removed from the cart.");
+			return true;
+		} else {
+			System.out.println(medium.getTitle() + " is not in the cart.");
+			return false;
+		}
 	}
 	
 	public float totalCost() {

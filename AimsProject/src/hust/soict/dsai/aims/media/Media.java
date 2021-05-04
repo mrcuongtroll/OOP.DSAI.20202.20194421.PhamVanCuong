@@ -73,6 +73,10 @@ public abstract class Media {
 		return dateAdded;
 	}
 	
+	public void setDateAdded() {
+		this.dateAdded = LocalDate.now();
+	}
+	
 	public abstract String getDetails();
 
 }

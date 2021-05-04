@@ -18,6 +18,9 @@ public class CartTest {
 		
 		DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
 		cart.addMedia(dvd3);
+		cart.addMedia(dvd3);
+		cart.removeMedia(dvd3);
+		cart.removeMedia(dvd3);
 		
 		
 		Track track1 = new Track("Bruh1", 13);
@@ -32,6 +35,8 @@ public class CartTest {
 		
 		Book book1 = new Book("Sherlock Holmes", "Detective", 420, 5f);
 		book1.addAuthor("Conan Doyle", "JK Rolling");
+		book1.addAuthor("jk rOLLING");
+		book1.removeAuthor("jk rOLLING");
 		book1.removeAuthor("jk rOLLING");
 		cart.addMedia(book1);
 		

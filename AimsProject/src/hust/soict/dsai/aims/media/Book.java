@@ -10,7 +10,7 @@ public class Book extends Media {
 		boolean found = false;
 		for (String name: this.authors) {
 			if (name.toLowerCase().equals(authorName.toLowerCase())) {
-				System.out.println(authorName + " is already in the list of authors.");
+				System.out.println(name + " is already in the list of authors.");
 				found = true;
 				break;
 			}
@@ -27,19 +27,16 @@ public class Book extends Media {
 		}
 	}
 	
-	public void removeAuthor(String authorName) {
-		boolean found = false;
+	public boolean removeAuthor(String authorName) {
 		for (String name: this.authors) {
 			if (name.toLowerCase().equals(authorName.toLowerCase())) {
 				this.authors.remove(name);
 				System.out.println(name + " has been removed from the " + this.getTitle() + " list of authors.");
-				found = true;
-				break;
+				return true;
 			}
 		}
-		if (found == false) {
-			System.out.println(authorName + " is not in the list of authors.");
-		}
+		System.out.println(authorName + " is not in the list of authors.");
+		return false;
 	}
 	
 	public String getDetails() {

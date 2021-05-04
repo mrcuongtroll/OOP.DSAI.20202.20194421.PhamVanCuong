@@ -18,11 +18,13 @@ public class CompactDisc extends Disc implements Playable {
 		}
 	}
 	
-	public void removeTrack(Track track) {
-		if (this.tracks.remove(track) == false) {
-			System.out.println("The track " + track.getTitle() + " is not in the tracklist of " + this.getTitle());
-		} else {
+	public boolean removeTrack(Track track) {
+		if (this.tracks.remove(track)) {
 			System.out.println("The track " + track.getTitle() + " has been removed from the tracklist of " + this.getTitle());
+			return true;
+		} else {
+			System.out.println("The track " + track.getTitle() + " is not in the tracklist of " + this.getTitle());
+			return false;
 		}
 	}
 	
