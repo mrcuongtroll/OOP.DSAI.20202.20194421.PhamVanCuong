@@ -72,5 +72,7 @@ public abstract class Media {
 	public LocalDate getDateAdded() {
 		return dateAdded;
 	}
+	
+	public abstract String getDetails();
 
 }

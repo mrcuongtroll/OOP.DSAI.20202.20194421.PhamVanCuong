@@ -1,7 +1,7 @@
 package hust.soict.dsai.aims.media;
 
 public class Track implements Playable {
-
+  
 	private String title;
 	private int length;
 	
@@ -14,13 +14,15 @@ public class Track implements Playable {
 		}
 	}
 	
-
 	public void play() {
-		System.out.println("Playing Track: " + this.getTitle());
-		System.out.println("Track length: " + this.getLength());
+		if (this.getLength() <= 0) {
+			System.out.println("The track " + this.getTitle() + " cannot be played.");
+		} else {
+			System.out.println("Playing track: " + this.getTitle());
+			System.out.println("Track length: " + this.getLength());
+		}
 	}
 	
-
 	public Track(String title, int length) {
 		super();
 		this.title = title;
