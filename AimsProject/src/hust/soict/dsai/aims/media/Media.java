@@ -1,7 +1,7 @@
 package hust.soict.dsai.aims.media;
 import java.time.LocalDate;
 
-public class Media {
+public abstract class Media {
 	private String title;
 	private String category;
 	private float cost;
@@ -20,17 +20,6 @@ public class Media {
 	
 	public boolean search(String title) {
 		return this.title.toLowerCase().equals(title.toLowerCase());
-	}
-	
-	
-	public Media(String title, String category, float cost, LocalDate dateAdded) {
-		super();
-		this.title = title;
-		this.category = category;
-		this.cost = cost;
-		this.dateAdded = dateAdded;
-		this.id = nbMedia;
-		nbMedia += 1;
 	}
 
 

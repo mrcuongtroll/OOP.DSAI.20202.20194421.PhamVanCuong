@@ -1,6 +1,4 @@
 package hust.soict.dsai.aims.media;
-
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,18 +9,17 @@ public class Book extends Media {
 	public void addAuthor(String authorName) {
 		if (this.authors.contains(authorName) == false) {
 			this.authors.add(authorName);
+		} else {
+			System.out.println(authorName + " is already in the list of authors.");
 		}
 	}
 	
 	public void removeAuthor(String authorName) {
 		if (this.authors.contains(authorName)) {
 			this.authors.remove(authorName);
+		} else {
+			System.out.println(authorName + " is not in the list of authors.");
 		}
-	}
-
-	public Book(String title, String category, float cost, LocalDate dateAdded) {
-		super(title, category, cost, dateAdded);
-		// TODO Auto-generated constructor stub
 	}
 
 	public Book(String title, String category, float cost) {
