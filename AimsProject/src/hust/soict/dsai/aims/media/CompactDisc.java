@@ -8,19 +8,31 @@ public class CompactDisc extends Disc {
 	private List<Track> tracks = new ArrayList<Track>();
 	
 	public void addTrack(Track track) {
-		if (this.tracks.contains(track) == false) {
+		boolean found = false;
+		for (Track t: this.tracks) {
+			if (t.equals(track)) {
+				System.out.println("The track " + track.getTitle() + " is already in the tracklist.");
+				found = true;
+				break;
+			}
+		}
+		if (found == false) {
 			this.tracks.add(track);
-		} else {
-			System.out.println("The track " + track.getTitle() + " is already in the tracklist.");
 		}
 	}
 	
 	public void removeTrack(Track track) {
-		if (this.tracks.contains(track)) {
-			this.tracks.remove(track);
-		} else {
+		if (this.tracks.remove(track) == false) {
 			System.out.println("The track " + track.getTitle() + " is not in the tracklist.");
 		}
+	}
+	
+	public int getLength() {
+		int totalLength = 0;
+		for (Track track: this.tracks) {
+			totalLength += track.getLength();
+		}
+		return totalLength;
 	}
 
 	public CompactDisc(String title, String category, String director, float cost) {

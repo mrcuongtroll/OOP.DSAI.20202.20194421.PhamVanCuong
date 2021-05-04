@@ -7,17 +7,29 @@ public class Book extends Media {
 	private List<String> authors = new ArrayList<String>();
 	
 	public void addAuthor(String authorName) {
-		if (this.authors.contains(authorName) == false) {
+		boolean found = false;
+		for (String name: this.authors) {
+			if (name.toLowerCase().equals(authorName.toLowerCase())) {
+				System.out.println(authorName + " is already in the list of authors.");
+				found = true;
+				break;
+			}
+		}
+		if (found == false) {
 			this.authors.add(authorName);
-		} else {
-			System.out.println(authorName + " is already in the list of authors.");
 		}
 	}
 	
 	public void removeAuthor(String authorName) {
-		if (this.authors.contains(authorName)) {
-			this.authors.remove(authorName);
-		} else {
+		boolean found = false;
+		for (String name: this.authors) {
+			if (name.toLowerCase().equals(authorName.toLowerCase())) {
+				this.authors.remove(name);
+				found = true;
+				break;
+			}
+		}
+		if (found == false) {
 			System.out.println(authorName + " is not in the list of authors.");
 		}
 	}
