@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Book {
+
 	private int id;
 	private String title;
 	private String category;
@@ -23,6 +24,32 @@ public class Book {
 
 	public Book() {
 		// TODO Auto-generated constructor stub
+	}
+	
+	public Book(int id) {
+		super();
+		this.id = id;
+	}
+	
+	public Book(int id, String title, String category, float cost) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.category = category;
+		this.cost = cost;
+	}
+
+	public Book(int id, String title, String category) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.category = category;
+	}
+
+	public Book(int id, String title) {
+		super();
+		this.id = id;
+		this.title = title;
 	}
 
 	public int getId() {
