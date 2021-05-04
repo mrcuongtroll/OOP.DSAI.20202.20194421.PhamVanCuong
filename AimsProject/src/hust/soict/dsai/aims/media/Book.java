@@ -1,28 +1,63 @@
 package hust.soict.dsai.aims.media;
-
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Book extends Media {
-
+	private int contentLength;
 	private List<String> authors = new ArrayList<String>();
 	
 	public void addAuthor(String authorName) {
-		if (this.authors.contains(authorName) == false) {
+		boolean found = false;
+		for (String name: this.authors) {
+			if (name.toLowerCase().equals(authorName.toLowerCase())) {
+				System.out.println(authorName + " is already in the list of authors.");
+				found = true;
+				break;
+			}
+		}
+		if (found == false) {
 			this.authors.add(authorName);
+			System.out.println(authorName + " has been added to the " + this.getTitle() + " list of authors.");
+		}
+	}
+	
+	public void addAuthor(String... authorsNames) {
+		for (String authorName: authorsNames) {
+			this.addAuthor(authorName);
 		}
 	}
 	
 	public void removeAuthor(String authorName) {
-		if (this.authors.contains(authorName)) {
-			this.authors.remove(authorName);
+		boolean found = false;
+		for (String name: this.authors) {
+			if (name.toLowerCase().equals(authorName.toLowerCase())) {
+				this.authors.remove(name);
+				System.out.println(name + " has been removed from the " + this.getTitle() + " list of authors.");
+				found = true;
+				break;
+			}
+		}
+		if (found == false) {
+			System.out.println(authorName + " is not in the list of authors.");
 		}
 	}
-
-	public Book(String title, String category, float cost, LocalDate dateAdded) {
-		super(title, category, cost, dateAdded);
-		// TODO Auto-generated constructor stub
+	
+	public String getDetails() {
+		StringBuffer authorsList = new StringBuffer(this.authors.get(0));
+		for (int i = 1; i < this.authors.size(); i++) {
+			authorsList.append(", " + this.authors.get(i));
+		}
+		return ("Product ID: " + String.valueOf(this.getID())
+		+ "\n" + "\t" + "Title: " + this.getTitle()
+		+ "\n" + "\t" + "Category: " + this.getCategory()
+		+ "\n" + "\t" + "Authors: " + authorsList
+		+ "\n" + "\t" + "Content Length: " + String.valueOf(this.getContentLength()) + " pages"
+		+ "\n" + "\t" + "Price: $" + String.valueOf(this.getCost()));
+	}
+	
+	public Book(String title, String category, int contentLength, float cost) {
+		super(title, category, cost);
+		this.contentLength = contentLength;
 	}
 
 	public Book(String title, String category, float cost) {
@@ -38,6 +73,10 @@ public class Book extends Media {
 	public Book(String title) {
 		super(title);
 		// TODO Auto-generated constructor stub
+	}
+
+	public int getContentLength() {
+		return contentLength;
 	}
 
 }
