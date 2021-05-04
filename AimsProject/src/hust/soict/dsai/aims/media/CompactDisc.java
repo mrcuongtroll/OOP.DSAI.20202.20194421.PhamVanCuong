@@ -3,7 +3,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 public class CompactDisc extends Disc implements Playable {
+
 	private String artist;
 	private List<Track> tracks = new ArrayList<Track>();
 	
@@ -34,12 +36,14 @@ public class CompactDisc extends Disc implements Playable {
 		}
 		return totalLength;
 	}
+
 	
 	public void play() {
 		for (Track track: this.tracks) {
 			track.play();
 		}
 	}
+
 
 	public CompactDisc(String title, String category, String director, float cost) {
 		super(title, category, director, cost);
