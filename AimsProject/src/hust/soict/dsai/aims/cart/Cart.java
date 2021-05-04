@@ -1,5 +1,5 @@
 package hust.soict.dsai.aims.cart;
-import hust.soict.dsai.aims.disc.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.DigitalVideoDisc;
 
 public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;
@@ -60,7 +60,7 @@ public class Cart {
 	public void removeDigitalVideoDisc(DigitalVideoDisc disc) {
 		boolean found = false;
 		for (int i = 0; i < qtyOrdered; i++) {
-			if (itemsOrdered[i].isEquals(disc)) {
+			if (itemsOrdered[i].equals(disc)) {
 				found = true;
 				qtyOrdered--;
 				System.out.println("The disc " + disc.getTitle() + " has been removed from the cart.");
