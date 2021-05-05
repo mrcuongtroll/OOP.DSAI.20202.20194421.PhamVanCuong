@@ -9,8 +9,13 @@ public class Store {
 
 	public void addMedia(Media... media) {
 		for (Media medium: media) {
-			this.itemsInStore.add(medium);
-			System.out.println(medium.getTitle() + " has been added to the store.");
+			if (this.itemsInStore.contains(medium)) {
+				System.out.println(medium.getTitle() + " is already available at the store.");
+			} else {
+				medium.setDateAdded();
+				this.itemsInStore.add(medium);
+				System.out.println(medium.getTitle() + " has been added to the store.");
+			}
 		}
 	}
 	
@@ -28,7 +33,8 @@ public class Store {
 		System.out.println("\n");
 		System.out.println("*************AVAILABLE MEDIA IN STORE**************");
 		for (int i = 0; i < itemsInStore.size(); i++) {
-			System.out.println(Integer.toString(i+1) + "." + "\t" + this.itemsInStore.get(i).getDetails() + "\n");
+			System.out.println(Integer.toString(i+1) + "." + "\t" + this.itemsInStore.get(i).getDetails());
+			System.out.println("\tDate added: " + this.itemsInStore.get(i).getDateAdded() + "\n");
 		}
 		System.out.println("***************************************************");
 		System.out.println("\n");
