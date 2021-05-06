@@ -2,6 +2,7 @@ package hust.soict.dsai.aims.cart;
 import hust.soict.dsai.aims.media.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Collections;
 
 
 public class Cart {
@@ -105,5 +106,13 @@ public class Cart {
 			System.out.println("\n");
 			return false;
 		}
+	}
+	
+	public void sortByTitle() {
+		Collections.sort(this.itemsOrdered, Media.COMPARE_BY_TITLE_COST);
+	}
+	
+	public void sortByCost() {
+		Collections.sort(this.itemsOrdered, Media.COMPARE_BY_COST_TITLE);
 	}
 }
