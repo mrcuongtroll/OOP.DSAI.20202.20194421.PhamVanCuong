@@ -1,6 +1,6 @@
 package hust.soict.dsai.aims;
 import hust.soict.dsai.aims.cart.Cart;
-import hust.soict.dsai.aims.media.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.*;
 
 public class Aims {
 	public static void main(String[] args) {
@@ -18,13 +18,13 @@ public class Aims {
 //		DigitalVideoDisc[] list = {dvd1, dvd2, dvd3};
 //		anOrder.addDigitalVideoDisc(list);
 		
-		anOrder.addDigitalVideoDisc(dvd1, dvd2, dvd3);
+		anOrder.addMedia(dvd1, dvd2, dvd3);
 		
 		System.out.println("Total cost is: ");
 		System.out.println(anOrder.totalCost());
 		
-		anOrder.removeDigitalVideoDisc(dvd2);
-		anOrder.removeDigitalVideoDisc(dvd2);
+		anOrder.removeMedia(dvd2);
+		anOrder.removeMedia(dvd2);
 		System.out.println("Total cost is: ");
 		System.out.println(anOrder.totalCost());
 	}
