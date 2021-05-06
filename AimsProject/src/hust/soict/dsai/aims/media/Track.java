@@ -5,9 +5,13 @@ public class Track implements Playable {
 	private int length;
 	
 	public boolean equals(Object track) {
-		Track that = (Track) track;
-		if ((that instanceof Track) && (this.length == that.length) && (this.title.toLowerCase().equals(that.getTitle().toLowerCase()))) {
-			return true;
+		if (track instanceof Track) {
+			Track that = (Track) track;
+			if ((this.length == that.length) && (this.title.toLowerCase().equals(that.getTitle().toLowerCase()))) {
+				return true;
+			} else {
+				return false;
+			}
 		} else {
 			return false;
 		}

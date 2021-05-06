@@ -19,7 +19,7 @@ public abstract class Media {
 	}
 	
 	public boolean search(String title) {
-		return this.title.toLowerCase().equals(title.toLowerCase());
+		return this.title.toLowerCase().contains(title.toLowerCase());
 	}
 
 
@@ -78,5 +78,9 @@ public abstract class Media {
 	}
 	
 	public abstract String getDetails();
+	
+	public String toString() {
+		return this.getDetails();
+	}
 
 }

@@ -47,10 +47,10 @@ public class CartTest {
 //		cart.addMedia(dvd2);
 //		cart.search(1);
 //		cart.removeMedia(dvd3);
-//		cart.search(2);
-//		cart.addMedia(dvd1);
-//		cart.search("The Lion King");
-//		cart.search("Aladin");
+		cart.search(2);
+		cart.addMedia(dvd3);
+		cart.search("lion");
+		cart.search("Alad");
 	}
 
 }
