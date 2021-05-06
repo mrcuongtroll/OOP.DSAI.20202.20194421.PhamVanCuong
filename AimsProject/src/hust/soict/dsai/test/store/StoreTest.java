@@ -15,7 +15,11 @@ public class StoreTest {
 
 		//Try adding DVDs
 //		myStore.addMedia(dvd2, 5);
-		myStore.addMedia(dvd2, dvd1, dvd3, dvd1, dvd1);
+		myStore.addMedia(dvd2);
+		myStore.addMedia(dvd1);
+		myStore.addMedia(dvd3);
+		myStore.addMedia(dvd1);
+		myStore.addMedia(dvd1);
 		myStore.print();
 
 		//Try removing DVDs

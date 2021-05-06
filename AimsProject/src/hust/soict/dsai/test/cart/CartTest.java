@@ -26,15 +26,18 @@ public class CartTest {
 		Track track1 = new Track("Bruh1", 13);
 		Track track2 = new Track("Bruh2", 21);
 		CompactDisc cd1 = new CompactDisc("Allstars", "Yes", "Smash Mouth", "Dunno", 69.420f);
-		cd1.addTrack(track1, track2);
+		cd1.addTrack(track1);
+		cd1.addTrack(track2);
 		cd1.addTrack(track1);
 		cd1.removeTrack(track2);
 		cd1.removeTrack(track2);
-		cd1.addTrack(track2, track1);
+		cd1.addTrack(track2);
+		cd1.addTrack(track1);
 		cart.addMedia(cd1);
 		
 		Book book1 = new Book("Sherlock Holmes", "Detective", 420, 5f);
-		book1.addAuthor("Conan Doyle", "JK Rolling");
+		book1.addAuthor("Conan Doyle");
+		book1.addAuthor("JK Rolling");
 		book1.addAuthor("jk rOLLING");
 		book1.removeAuthor("jk rOLLING");
 		book1.removeAuthor("jk rOLLING");
@@ -48,12 +51,12 @@ public class CartTest {
 		
 		//TODO: Test the search method here
 //		cart.addMedia(dvd2);
-//		cart.search(1);
+//		cart.filterMedia(1);
 //		cart.removeMedia(dvd3);
-//		cart.search(2);
+//		cart.filterMedia(2);
 //		cart.addMedia(dvd3);
-//		cart.search("lion");
-//		cart.search("Alad");
+//		cart.filterMedia("lion");
+//		cart.filterMedia("Alad");
 	}
 
 }
