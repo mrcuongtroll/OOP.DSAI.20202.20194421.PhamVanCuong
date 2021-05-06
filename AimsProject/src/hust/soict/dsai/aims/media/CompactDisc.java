@@ -44,9 +44,12 @@ public class CompactDisc extends Disc implements Playable {
 	}
 	
 	public String getDetails() {
-		StringBuffer tracklist = new StringBuffer(this.tracks.get(0).getTitle());
-		for (int i = 1; i < this.tracks.size(); i++) {
-			tracklist.append(", " + this.tracks.get(i).getTitle());
+		StringBuffer tracklist = new StringBuffer();
+		if (this.tracks.size() >= 1) {
+			tracklist.append(this.tracks.get(0).getTitle());
+			for (int i = 1; i < this.tracks.size(); i++) {
+				tracklist.append(", " + this.tracks.get(i).getTitle());
+			}
 		}
 		return ("Product ID: " + String.valueOf(this.getID())
 		+ "\n" + "\t" + "Title: " + this.getTitle()
