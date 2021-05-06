@@ -1,0 +1,5 @@
+QUESTION: Iterate through the list and print out the information of the media by using toString() method. Observe
+what happens and explain in detail. 
+ANSWER: The console prints out different kinds of information for different types of media because the parent class
+(Media) has overridden toString() method from Object class, the children classes (CompactDisc, DigitalVideoDisc, Book) have 
+then overridden the toString() method (getDetails() method in my case) from the class Media to match their data.  
