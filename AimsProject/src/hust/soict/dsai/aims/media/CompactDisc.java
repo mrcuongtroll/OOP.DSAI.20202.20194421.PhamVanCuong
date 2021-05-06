@@ -7,14 +7,14 @@ public class CompactDisc extends Disc implements Playable {
 	private String artist;
 	private List<Track> tracks = new ArrayList<Track>();
 	
-	public void addTrack(Track... tracklist) {
-		for (Track track: tracklist) {
-			if (this.tracks.contains(track)) {
-				System.out.println("The track " + track.getTitle() + " is already in the tracklist of " + this.getTitle());
-			} else {
-				this.tracks.add(track);
-				System.out.println("The track " + track.getTitle() + " has been added to the tracklist of " + this.getTitle());
-			}
+	public boolean addTrack(Track track) {
+		if (this.tracks.contains(track)) {
+			System.out.println("The track " + track.getTitle() + " is already in the tracklist of " + this.getTitle());
+			return false;
+		} else {
+			this.tracks.add(track);
+			System.out.println("The track " + track.getTitle() + " has been added to the tracklist of " + this.getTitle());
+			return true;
 		}
 	}
 	
@@ -51,6 +51,10 @@ public class CompactDisc extends Disc implements Playable {
 				track.play();
 			}
 		}
+	}
+	
+	public String getType() {
+		return "CD";
 	}
 	
 	public String getDetails() {

@@ -1,7 +1,11 @@
 package hust.soict.dsai.aims.media;
 
 public class DigitalVideoDisc extends Disc implements Playable {
-
+	
+	public String getType() {
+		return "DVD";
+	}
+	
 	public String getDetails() {
 		return ("Product ID: " + String.valueOf(this.getID())
 				+ "\n" + "\t" + "Title: " + this.getTitle()

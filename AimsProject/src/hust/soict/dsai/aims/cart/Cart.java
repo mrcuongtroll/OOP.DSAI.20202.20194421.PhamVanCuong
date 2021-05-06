@@ -9,17 +9,18 @@ public class Cart {
 	public static final int MAX_NUMBERS_ORDERED = 20;
 	private List<Media> itemsOrdered = new ArrayList<Media>();
 	
-	public void addMedia(Media... media) {
-		for (Media medium: media) {
-			if (this.itemsOrdered.size() == MAX_NUMBERS_ORDERED) {
-				System.out.println("The cart is full.");
-				break;
-			} else if (!this.itemsOrdered.contains(medium)) {
-				this.itemsOrdered.add(medium);
-				System.out.println(medium.getTitle() + " has beed added to the cart.");
-			} else {
-				System.out.println(medium.getTitle() + " is already in the cart.");
-			}
+	public boolean addMedia(Media medium) {
+		if (this.itemsOrdered.size() == MAX_NUMBERS_ORDERED) {
+			System.out.println("The cart is full.");
+			return false;
+		//In case the cart cannot carry dupplicate items
+//		} else if (this.itemsOrdered.contains(medium)) {
+//			System.out.println(medium.getTitle() + " is already in the cart.");
+//			return false;
+		} else {
+			this.itemsOrdered.add(medium);
+			System.out.println(medium.getTitle() + " has beed added to the cart.");
+			return true;
 		}
 	}
 	
@@ -52,7 +53,7 @@ public class Cart {
 		System.out.println("\n");
 	}
 	
-	public boolean search(int id) {
+	public boolean filterMedia(int id) {
 		boolean found = false;
 		int qty = 0;
 		float cost = 0f;
@@ -80,7 +81,7 @@ public class Cart {
 		}
 	}
 	
-	public boolean search(String title) {
+	public boolean filterMedia(String title) {
 		boolean found = false;
 		int qty = 0;
 		float cost = 0f;
@@ -108,11 +109,24 @@ public class Cart {
 		}
 	}
 	
+	public Media searchMedia(String title) {
+		for (Media medium: this.itemsOrdered) {
+			if (medium.getTitle().toLowerCase().equals(title.toLowerCase())) {
+				return medium;
+			}
+		}
+		return null;
+	}
+	
 	public void sortByTitle() {
 		Collections.sort(this.itemsOrdered, Media.COMPARE_BY_TITLE_COST);
 	}
 	
 	public void sortByCost() {
 		Collections.sort(this.itemsOrdered, Media.COMPARE_BY_COST_TITLE);
+	}
+	
+	public int getSize() {
+		return this.itemsOrdered.size();
 	}
 }

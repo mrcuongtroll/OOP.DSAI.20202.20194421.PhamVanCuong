@@ -8,7 +8,7 @@ public abstract class Media {
 	private float cost;
 	private LocalDate dateAdded;
 	private int id;
-	private static int nbMedia = 0;
+	private static int nbMedia = 1;
 	
 	public static final Comparator<Media> COMPARE_BY_TITLE_COST = new MediaComparatorByTitleCost();
 	public static final Comparator<Media> COMPARE_BY_COST_TITLE = new MediaComparatorByCostTitle();
@@ -77,9 +77,11 @@ public abstract class Media {
 		return dateAdded;
 	}
 	
-	public void setDateAdded() {
-		this.dateAdded = LocalDate.now();
+	public void setDateAdded(LocalDate date) {
+		this.dateAdded = date;
 	}
+	
+	public abstract String getType();
 	
 	public abstract String getDetails();
 	
