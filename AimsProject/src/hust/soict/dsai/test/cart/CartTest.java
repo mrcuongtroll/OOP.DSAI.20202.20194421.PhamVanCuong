@@ -40,6 +40,9 @@ public class CartTest {
 		book1.removeAuthor("jk rOLLING");
 		cart.addMedia(book1);
 		
+		//Test sort methods
+		cart.sortByTitle();
+		
 		//Test the print method
 		cart.print();
 		
@@ -47,10 +50,10 @@ public class CartTest {
 //		cart.addMedia(dvd2);
 //		cart.search(1);
 //		cart.removeMedia(dvd3);
-		cart.search(2);
-		cart.addMedia(dvd3);
-		cart.search("lion");
-		cart.search("Alad");
+//		cart.search(2);
+//		cart.addMedia(dvd3);
+//		cart.search("lion");
+//		cart.search("Alad");
 	}
 
 }
