@@ -265,10 +265,16 @@ public class Aims {
 		
 		//Place order
 		else if (choice == 5) {
-			cart = new Cart();
-			fakeClearScreen();
-			System.out.println("Your order has been placed\n");
-			showMenu();
+			if (cart.getSize() == 0) {
+				fakeClearScreen();
+				System.out.println("You cannot place an empty order\n");
+				cartMenu();
+			} else {
+				cart = new Cart();
+				fakeClearScreen();
+				System.out.println("Your order has been placed\n");
+				showMenu();
+			}
 		}
 	}
 

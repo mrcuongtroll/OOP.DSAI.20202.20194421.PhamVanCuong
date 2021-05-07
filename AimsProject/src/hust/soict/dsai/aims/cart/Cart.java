@@ -6,7 +6,7 @@ import java.util.Collections;
 
 
 public class Cart {
-	public static final int MAX_NUMBERS_ORDERED = 20;
+	private static final int MAX_NUMBERS_ORDERED = 20;
 	private List<Media> itemsOrdered = new ArrayList<Media>();
 	
 	public boolean addMedia(Media medium) {
