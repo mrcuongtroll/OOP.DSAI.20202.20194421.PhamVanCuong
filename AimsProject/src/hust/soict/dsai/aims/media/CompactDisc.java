@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class CompactDisc extends Disc implements Playable {
+public class CompactDisc extends Disc {
 	private String artist;
 	private List<Track> tracks = new ArrayList<Track>();
 	
