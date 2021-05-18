@@ -42,10 +42,14 @@ public class AWTAccumulator extends Frame {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			int numberIn = Integer.parseInt(tfInput.getText());
-			sum += numberIn;
-			tfInput.setText("");
-			tfOutput.setText(sum + "");
+			try {
+				int numberIn = Integer.parseInt(tfInput.getText());
+				sum += numberIn;
+				tfInput.setText("");
+				tfOutput.setText(sum + "");
+			} catch (NumberFormatException ex)  {
+				tfInput.setText("");
+			}
 		}
 		
 	}
