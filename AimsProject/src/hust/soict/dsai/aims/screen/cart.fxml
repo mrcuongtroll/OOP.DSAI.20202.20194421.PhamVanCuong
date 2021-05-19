@@ -72,8 +72,8 @@
             </TableView>
             <HBox alignment="CENTER_RIGHT" prefWidth="200.0" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" text="Play" />
-                  <Button mnemonicParsing="false" text="Remove" />
+                  <Button fx:id="btnPlay" mnemonicParsing="false" text="Play" />
+                  <Button fx:id="btnRemove" mnemonicParsing="false" text="Remove" />
                </children>
                <padding>
                   <Insets bottom="40.0" top="10.0" />
