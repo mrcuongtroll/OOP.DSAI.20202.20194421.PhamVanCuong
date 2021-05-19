@@ -1,11 +1,14 @@
 package hust.soict.dsai.aims.screen;
 
 import hust.soict.dsai.aims.cart.Cart;
+import hust.soict.dsai.aims.exception.*;
 import hust.soict.dsai.aims.media.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -117,6 +120,23 @@ public class CartScreenController {
 		Media media = tblMedia.getSelectionModel().getSelectedItem();
 		this.cart.removeMedia(media);
 		costLabel.setText(String.valueOf(this.cart.totalCost()));
+	}
+	
+	@FXML
+	private void playButtonPressed(ActionEvent event) {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Media Player");
+		Media media = this.tblMedia.getSelectionModel().getSelectedItem();
+		try {
+			((Playable)media).play();
+			alert.setHeaderText("Now playing: " + media.getTitle());
+			alert.setContentText("Length: " + ((Disc)media).getLength());
+		} catch (PlayerException e) {
+			alert.setHeaderText("ERROR: Media length is non-positive.");
+			alert.setContentText("Media cannot be played.");
+		} finally {
+			alert.showAndWait();
+		}
 	}
 	
 	@FXML

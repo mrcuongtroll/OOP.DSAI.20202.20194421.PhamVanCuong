@@ -72,7 +72,7 @@
             </TableView>
             <HBox alignment="CENTER_RIGHT" prefWidth="200.0" spacing="10.0">
                <children>
-                  <Button fx:id="btnPlay" mnemonicParsing="false" text="Play" />
+                  <Button fx:id="btnPlay" mnemonicParsing="false" onAction="#playButtonPressed" text="Play" />
                   <Button fx:id="btnRemove" mnemonicParsing="false" onAction="#removeButtonPressed" text="Remove" />
                </children>
                <padding>
