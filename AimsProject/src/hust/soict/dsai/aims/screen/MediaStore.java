@@ -69,12 +69,12 @@ public class MediaStore extends JPanel {
 				((Disc)media).play();
 			} catch (PlayerException ex) {
 				j1.setText(media.getTitle() + " cannot be played");
-				j2.setText("");
+				j2.setText("Media length is non-positive");
 			} finally {
 				p.add(j1);
 				p.add(j2);
 				d.add(p);
-				d.setSize(150,100);
+				d.setSize(200,100);
 				d.setVisible(true);
 			}
 		}

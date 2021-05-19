@@ -140,6 +140,21 @@ public class CartScreenController {
 	}
 	
 	@FXML
+	private void placeOrderPressed(ActionEvent event) {	
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Notification");
+		if (this.cart.getSize() > 0) {
+			alert.setHeaderText("Your order has been placed.");
+			this.cart.empty();
+			costLabel.setText(String.valueOf(this.cart.totalCost()));
+		} else {
+			alert.setHeaderText("ERROR: Failed to place order.");
+			alert.setContentText("Your cart is empty");
+		}
+		alert.showAndWait();
+	}
+	
+	@FXML
 	private void setFilterByID() {
 		this.filterByID = true;
 	}

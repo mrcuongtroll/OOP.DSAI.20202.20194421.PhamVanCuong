@@ -40,7 +40,7 @@
       </VBox>
    </top>
    <center>
-      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+      <VBox BorderPane.alignment="CENTER">
          <padding>
             <Insets left="10.0" />
          </padding>
@@ -102,7 +102,7 @@
                   </Label>
                </children>
             </HBox>
-            <Button mnemonicParsing="false" style="-fx-background-color: RED;" text="Place Order" textFill="WHITE">
+            <Button mnemonicParsing="false" onAction="#placeOrderPressed" style="-fx-background-color: RED;" text="Place Order" textFill="WHITE">
                <font>
                   <Font size="24.0" />
                </font>
