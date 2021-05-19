@@ -136,4 +136,8 @@ public class Cart {
 	public ObservableList<Media> getItemsOrdered() {
 		return this.itemsOrdered;
 	}
+	
+	public void empty() {
+		this.itemsOrdered.clear();
+	}
 }
