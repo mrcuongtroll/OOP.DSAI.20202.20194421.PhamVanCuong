@@ -11,6 +11,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 
 import javax.swing.Box;
@@ -35,6 +36,16 @@ public class StoreScreen extends JFrame {
 		DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
 		DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
 		DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
+		Track track1 = new Track("Bruh1", 13);
+		Track track2 = new Track("Bruh2", 21);
+		Track track3 = new Track("Bruh3");
+		CompactDisc cd1 = new CompactDisc("Allstars", "Yes", "Smash Mouth", "Dunno", 69.420f);
+		cd1.addTrack(track1);
+		cd1.addTrack(track2);
+		CompactDisc cd2 = new CompactDisc("Allstars 2", "Yes", "Smash Mouth", "Dunno", 69.420f);
+		cd2.addTrack(track1);
+		cd2.addTrack(track3);
+		cd2.addTrack(track2);
 		DigitalVideoDisc dvd4 = new DigitalVideoDisc("Star Wars 2", "Science Fiction", "George Lucas", 87, 24.95f);
 		DigitalVideoDisc dvd5 = new DigitalVideoDisc("Star Wars 3", "Science Fiction", "George Lucas", 87, 24.95f);
 		DigitalVideoDisc dvd6 = new DigitalVideoDisc("Star Wars 4", "Science Fiction", "George Lucas", 87, 24.95f);
@@ -48,6 +59,8 @@ public class StoreScreen extends JFrame {
 		myStore.addMedia(dvd2);
 		myStore.addMedia(dvd1);
 		myStore.addMedia(dvd3);
+		myStore.addMedia(cd1);
+		myStore.addMedia(cd2);
 		myStore.addMedia(dvd4);
 		myStore.addMedia(dvd5);
 		myStore.addMedia(dvd6);
@@ -69,6 +82,13 @@ public class StoreScreen extends JFrame {
 		setVisible(true);
 		setTitle("Store");
 		setSize(1024,768);
+		
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		int w = getSize().width;
+        int h = getSize().height;
+        int x = (dim.width - w) / 2;
+        int y = (dim.height - h) / 2;
+        setLocation(x,y);
 	}
 	
 	JPanel createNorth() {
