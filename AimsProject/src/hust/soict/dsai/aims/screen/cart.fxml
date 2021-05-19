@@ -70,10 +70,25 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <HBox alignment="CENTER_RIGHT" prefWidth="200.0" spacing="10.0">
+            <HBox alignment="TOP_RIGHT" prefWidth="200.0" spacing="10.0">
                <children>
-                  <Button fx:id="btnPlay" mnemonicParsing="false" onAction="#playButtonPressed" text="Play" />
-                  <Button fx:id="btnRemove" mnemonicParsing="false" onAction="#removeButtonPressed" text="Remove" />
+                  <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#sortBtnPressed" text="Sort" />
+                        <RadioButton mnemonicParsing="false" onAction="#setSortByTitle" selected="true" text="By Title">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="sortCategory" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <RadioButton mnemonicParsing="false" onAction="#setSortByCost" text="By Cost" toggleGroup="$sortCategory" />
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" spacing="10.0">
+                     <children>
+                        <Button fx:id="btnPlay" mnemonicParsing="false" onAction="#playButtonPressed" text="Play" />
+                        <Button fx:id="btnRemove" mnemonicParsing="false" onAction="#removeButtonPressed" text="Remove" />
+                     </children>
+                  </HBox>
                </children>
                <padding>
                   <Insets bottom="40.0" top="10.0" />

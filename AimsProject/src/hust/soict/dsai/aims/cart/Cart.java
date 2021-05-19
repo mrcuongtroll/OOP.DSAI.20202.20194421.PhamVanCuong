@@ -3,10 +3,6 @@ import hust.soict.dsai.aims.media.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Collections;
-
 
 public class Cart {
 	private static final int MAX_NUMBERS_ORDERED = 20;
@@ -122,11 +118,11 @@ public class Cart {
 	}
 	
 	public void sortByTitle() {
-		Collections.sort(this.itemsOrdered, Media.COMPARE_BY_TITLE_COST);
+		FXCollections.sort(this.itemsOrdered, Media.COMPARE_BY_TITLE_COST);
 	}
 	
 	public void sortByCost() {
-		Collections.sort(this.itemsOrdered, Media.COMPARE_BY_COST_TITLE);
+		FXCollections.sort(this.itemsOrdered, Media.COMPARE_BY_COST_TITLE);
 	}
 	
 	public int getSize() {
