@@ -7,6 +7,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -46,6 +47,9 @@ public class CartScreenController {
 	@FXML
 	private RadioButton radioBtnFilterTitle;
 	
+	@FXML
+	private Label costLabel;
+	
 	public CartScreenController(Cart cart) {
 		super();
 		this.cart = cart;
@@ -62,6 +66,8 @@ public class CartScreenController {
 		
 		btnPlay.setVisible(false);
 		btnRemove.setVisible(false);
+		
+		costLabel.setText(String.valueOf(this.cart.totalCost()));
 		
 		tblMedia.getSelectionModel().selectedItemProperty().addListener(
 				new ChangeListener<Media>() {
@@ -105,10 +111,12 @@ public class CartScreenController {
 		}
 	}
 	
+	
 	@FXML
 	private void removeButtonPressed(ActionEvent event) {
 		Media media = tblMedia.getSelectionModel().getSelectedItem();
 		this.cart.removeMedia(media);
+		costLabel.setText(String.valueOf(this.cart.totalCost()));
 	}
 	
 	@FXML

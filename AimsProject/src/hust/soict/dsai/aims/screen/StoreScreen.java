@@ -41,7 +41,7 @@ public class StoreScreen extends JFrame {
 		DigitalVideoDisc dvd7 = new DigitalVideoDisc("Star Wars 5", "Science Fiction", "George Lucas", 87, 24.95f);
 		DigitalVideoDisc dvd8 = new DigitalVideoDisc("Star Wars 6", "Science Fiction", "George Lucas", 87, 24.95f);
 		DigitalVideoDisc dvd9 = new DigitalVideoDisc("Star Wars 7", "Science Fiction", "George Lucas", 87, 24.95f);
-//		DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
+		DigitalVideoDisc dvd10 = new DigitalVideoDisc("Aladin2", "Animation", 18.99f);
 
 		//Try adding DVDs
 //		myStore.addMedia(dvd2, 5);
@@ -54,6 +54,7 @@ public class StoreScreen extends JFrame {
 		myStore.addMedia(dvd7);
 		myStore.addMedia(dvd8);
 		myStore.addMedia(dvd9);
+		myStore.addMedia(dvd10);
 		new StoreScreen(myStore);
 	}
 	
