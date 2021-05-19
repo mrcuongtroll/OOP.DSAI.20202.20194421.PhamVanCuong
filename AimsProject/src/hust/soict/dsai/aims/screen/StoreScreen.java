@@ -12,6 +12,8 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.Box;
@@ -122,7 +124,9 @@ public class StoreScreen extends JFrame {
 		
 		menu.add(smUpdateStore);
 		menu.add(new JMenuItem("View store"));
-		menu.add(new JMenuItem("View cart"));
+		JMenuItem cart = new JMenuItem("View cart");
+		cart.addActionListener(new ViewCartListener());
+		menu.add(cart);
 		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setLayout(new FlowLayout(FlowLayout.LEFT));
@@ -142,6 +146,7 @@ public class StoreScreen extends JFrame {
 		JButton cart = new JButton("View cart");
 		cart.setPreferredSize(new Dimension(100,50));
 		cart.setMaximumSize(new Dimension(100,50));
+		cart.addActionListener(new ViewCartListener());
 		
 		header.add(Box.createRigidArea(new Dimension(10,10)));
 		header.add(title);
@@ -150,6 +155,15 @@ public class StoreScreen extends JFrame {
 		header.add(Box.createRigidArea(new Dimension(10,10)));
 		
 		return header;
+	}
+	
+	private class ViewCartListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			new CartScreen(cart);
+		}
+		
 	}
 
 }
