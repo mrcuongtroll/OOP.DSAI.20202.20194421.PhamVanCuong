@@ -107,7 +107,9 @@ public class CartScreenController {
 			filteredCart.setPredicate(s -> true);
 		} else {
 			if (filterByID) {
-				filteredCart.setPredicate(s -> s.getID() == Integer.parseInt(filter));
+				try {
+					filteredCart.setPredicate(s -> s.getID() == Integer.parseInt(filter));
+				} catch (NumberFormatException e) {}
 			} else {
 				filteredCart.setPredicate(s -> s.getTitle().toLowerCase().contains(filter));
 			}
@@ -124,19 +126,31 @@ public class CartScreenController {
 	
 	@FXML
 	private void playButtonPressed(ActionEvent event) {
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Media Player");
 		Media media = this.tblMedia.getSelectionModel().getSelectedItem();
 		try {
 			((Playable)media).play();
-			alert.setHeaderText("Now playing: " + media.getTitle());
-			alert.setContentText("Length: " + ((Disc)media).getLength());
 		} catch (PlayerException e) {
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Media Player");
 			alert.setHeaderText("ERROR: Media length is non-positive.");
 			alert.setContentText("Media cannot be played.");
-		} finally {
 			alert.showAndWait();
 		}
+	}
+	
+	@FXML
+	private void placeOrderPressed(ActionEvent event) {	
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Notification");
+		if (this.cart.getSize() > 0) {
+			alert.setHeaderText("Your order has been placed.");
+			this.cart.empty();
+			costLabel.setText(String.valueOf(this.cart.totalCost()));
+		} else {
+			alert.setHeaderText("ERROR: Failed to place order.");
+			alert.setContentText("Your cart is empty");
+		}
+		alert.showAndWait();
 	}
 	
 	@FXML

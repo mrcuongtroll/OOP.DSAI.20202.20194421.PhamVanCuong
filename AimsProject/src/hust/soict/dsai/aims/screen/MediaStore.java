@@ -5,8 +5,11 @@ import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.exception.*;
 
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -59,22 +62,28 @@ public class MediaStore extends JPanel {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			JPanel p = new JPanel();
-			JDialog d = new JDialog();
-			JLabel j1 = new JLabel();
-			JLabel j2 = new JLabel();
 			try {
-				j1.setText("Playing " + media.getTitle());
-				j2.setText("Length: " + ((Disc)media).getLength());
 				((Disc)media).play();
 			} catch (PlayerException ex) {
-				j1.setText(media.getTitle() + " cannot be played");
-				j2.setText("");
-			} finally {
+				JPanel p = new JPanel();
+				JDialog d = new JDialog();
+				JLabel j1 = new JLabel(media.getTitle() + " cannot be played");
+				JLabel j2 = new JLabel("Media length is non-positive");
+				p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
+				j1.setAlignmentX(Component.CENTER_ALIGNMENT);
+				j2.setAlignmentX(Component.CENTER_ALIGNMENT);
+				p.add(Box.createVerticalGlue());
 				p.add(j1);
 				p.add(j2);
+				p.add(Box.createVerticalGlue());
 				d.add(p);
-				d.setSize(150,100);
+				d.setSize(250,100);
+				Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+				int w = d.getSize().width;
+		        int h = d.getSize().height;
+		        int x = (dim.width - w) / 2;
+		        int y = (dim.height - h) / 2;
+		        d.setLocation(x,y);
 				d.setVisible(true);
 			}
 		}

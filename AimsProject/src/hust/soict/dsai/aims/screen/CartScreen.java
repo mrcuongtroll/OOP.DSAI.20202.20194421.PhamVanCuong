@@ -5,7 +5,9 @@ import java.io.IOException;
 import javax.swing.JFrame;
 
 import hust.soict.dsai.aims.cart.Cart;
+import hust.soict.dsai.aims.media.CompactDisc;
 import hust.soict.dsai.aims.media.DigitalVideoDisc;
+import hust.soict.dsai.aims.media.Track;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.fxml.FXMLLoader;
@@ -49,10 +51,22 @@ public class CartScreen extends JFrame {
 		DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
 		DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "George Lucas", 87, 24.95f);
 		DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
+		Track track1 = new Track("Bruh1", 13);
+		Track track2 = new Track("Bruh2", 21);
+		Track track3 = new Track("Bruh3");
+		CompactDisc cd1 = new CompactDisc("Allstars", "Yes", "Smash Mouth", "Dunno", 69.420f);
+		cd1.addTrack(track1);
+		cd1.addTrack(track2);
 		Cart myCart = new Cart();
+		CompactDisc cd2 = new CompactDisc("Allstars 2", "Yes", "Smash Mouth", "Dunno", 69.420f);
+		cd2.addTrack(track1);
+		cd2.addTrack(track3);
+		cd2.addTrack(track2);
 		myCart.addMedia(dvd1);
 		myCart.addMedia(dvd2);
 		myCart.addMedia(dvd3);
+		myCart.addMedia(cd1);
+		myCart.addMedia(cd2);
 		new CartScreen(myCart);
 	}
 }
