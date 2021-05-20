@@ -1,6 +1,8 @@
 package hust.soict.dsai.aims;
 
 import hust.soict.dsai.aims.cart.Cart;
+import hust.soict.dsai.aims.exception.AddToStoreException;
+import hust.soict.dsai.aims.exception.PlayerException;
 import hust.soict.dsai.aims.store.Store;
 import hust.soict.dsai.aims.media.*;
 import java.util.Scanner;
@@ -16,7 +18,7 @@ public class Aims {
 	private static Cart cart = new Cart();
 	private static Scanner scan = new Scanner(System.in);
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws AddToStoreException, PlayerException {
 		
 		//Add stuff to the store
 		DigitalVideoDisc dvd1 = new DigitalVideoDisc("The Lion King", "Animation", "Roger Allers", 87, 19.95f);
@@ -43,7 +45,7 @@ public class Aims {
 	}
 	
 	
-	public static void showMenu() {
+	public static void showMenu() throws PlayerException, AddToStoreException {
 		System.out.println("AIMS: ");
 		System.out.println("--------------------------------");
 		System.out.println("1. View store");
@@ -90,7 +92,7 @@ public class Aims {
 	}
 	
 	
-	public static void storeMenu() {
+	public static void storeMenu() throws PlayerException, AddToStoreException {
 		store.print();
 		
 		System.out.println("Options: ");
@@ -183,7 +185,7 @@ public class Aims {
 	}
 	
 	
-	public static void cartMenu() {
+	public static void cartMenu() throws PlayerException, AddToStoreException {
 		cart.print();
 		
 		System.out.println("Options: ");
@@ -279,7 +281,7 @@ public class Aims {
 	}
 
 	
-	public static void updateStoreMenu() {
+	public static void updateStoreMenu() throws AddToStoreException, PlayerException {
 		store.print();
 		
 		System.out.println("Options: ");
@@ -320,7 +322,7 @@ public class Aims {
 	}
 	
 	
-	public static void filterCartMenu() {
+	public static void filterCartMenu() throws PlayerException, AddToStoreException {
 		System.out.println("Options: ");
 		System.out.println("--------------------------------");
 		System.out.println("1. Filter by ID");
@@ -371,7 +373,7 @@ public class Aims {
 	}
 	
 	
-	public static void sortCartMenu() {
+	public static void sortCartMenu() throws PlayerException, AddToStoreException {
 		System.out.println("Options: ");
 		System.out.println("--------------------------------");
 		System.out.println("1. Sort by title");
@@ -422,7 +424,7 @@ public class Aims {
 	}
 	
 	
-	public static void seeMediaMenu(Media medium) {
+	public static void seeMediaMenu(Media medium) throws PlayerException, AddToStoreException {
 		//Book
 		if (medium instanceof Book) {
 			fakeClearScreen();
@@ -517,7 +519,7 @@ public class Aims {
 	}
 	
 	
-	public static void addToStoreMenu() {
+	public static void addToStoreMenu() throws AddToStoreException, PlayerException {
 		System.out.println("Options: ");
 		System.out.println("--------------------------------");
 		System.out.println("1. Add a new CD to the store");
@@ -605,7 +607,7 @@ public class Aims {
 	}
 	
 	
-	public static void removeFromStoreMenu() {
+	public static void removeFromStoreMenu() throws AddToStoreException, PlayerException {
 		store.print();
 		
 		System.out.println("Please enter the title of the media you want to remove: ");
