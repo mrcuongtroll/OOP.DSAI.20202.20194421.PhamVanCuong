@@ -1,22 +1,22 @@
 package hust.soict.dsai.aims.store;
 import java.util.ArrayList;
 import java.util.List;
+
+import hust.soict.dsai.aims.exception.AddToStoreException;
 import hust.soict.dsai.aims.media.*;
 import java.time.LocalDate;
 
 public class Store {
 	private List<Media> itemsInStore = new ArrayList<Media>();
 
-	public boolean addMedia(Media medium) {
-		if (this.itemsInStore.contains(medium)) {
-			System.out.println(medium.getTitle() + " is already available at the store.");
-			return false;
+	public void addMedia(Media medium) throws AddToStoreException {
+		if (this.itemsInStore.contains(medium) || medium.getTitle() == null) {
+			throw new AddToStoreException();
 		} else {
 			medium.setDateAdded(LocalDate.now());
 			this.itemsInStore.add(medium);
 			System.out.println(medium.getTitle() + " has been added to the store.");
 		}
-		return true;
 	}
 	
 	public boolean removeMedia(Media medium) {

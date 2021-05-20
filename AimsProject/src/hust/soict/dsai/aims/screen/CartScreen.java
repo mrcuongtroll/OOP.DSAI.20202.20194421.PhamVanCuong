@@ -1,5 +1,8 @@
 package hust.soict.dsai.aims.screen;
 
+import java.awt.Dimension;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 
 import javax.swing.JFrame;
@@ -8,6 +11,7 @@ import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.media.CompactDisc;
 import hust.soict.dsai.aims.media.DigitalVideoDisc;
 import hust.soict.dsai.aims.media.Track;
+import hust.soict.dsai.aims.store.Store;
 import javafx.application.Platform;
 import javafx.embed.swing.JFXPanel;
 import javafx.fxml.FXMLLoader;
@@ -15,11 +19,13 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 public class CartScreen extends JFrame {
+	private Store store;
 	private Cart cart;
 	
-	public CartScreen(Cart cart) {
+	public CartScreen(Store store, Cart cart) {
 		super();
 		
+		this.store = store;
 		this.cart = cart;
 		
 		JFXPanel fxPanel = new JFXPanel();
@@ -27,6 +33,16 @@ public class CartScreen extends JFrame {
 		
 		this.setTitle("Cart");
 		this.setVisible(true);
+		JFrame frame = this;
+		
+		this.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosing(WindowEvent e) {
+				new StoreScreen(store, cart);
+				dispose();
+			}
+		});
+		
 		Platform.runLater(new Runnable() {
 
 			@Override
@@ -34,7 +50,7 @@ public class CartScreen extends JFrame {
 
 				try {
 					FXMLLoader loader = new FXMLLoader(getClass().getResource("/hust/soict/dsai/aims/screen/cart.fxml"));
-					CartScreenController controller = new CartScreenController(cart);
+					CartScreenController controller = new CartScreenController(store, cart, frame);
 					loader.setController(controller);
 					Parent root = loader.load();
 					fxPanel.setScene(new Scene(root));
@@ -67,6 +83,7 @@ public class CartScreen extends JFrame {
 		myCart.addMedia(dvd3);
 		myCart.addMedia(cd1);
 		myCart.addMedia(cd2);
-		new CartScreen(myCart);
+		Store myStore = new Store();
+		new CartScreen(myStore, myCart);
 	}
 }
