@@ -47,6 +47,9 @@ public class CartScreenController {
 	private Button btnRemove;
 	
 	@FXML
+	private Button btnDetails;
+	
+	@FXML
 	private TextField tfFilter;
 	
 	@FXML
@@ -71,6 +74,7 @@ public class CartScreenController {
 		
 		btnPlay.setVisible(false);
 		btnRemove.setVisible(false);
+		btnDetails.setVisible(false);
 		
 		costLabel.setText(String.valueOf(this.cart.totalCost()));
 		
@@ -97,6 +101,7 @@ public class CartScreenController {
 	
 	private void updateButtonBar(Media media) {
 		btnRemove.setVisible(true);
+		btnDetails.setVisible(true);
 		if (media instanceof Playable) {
 			btnPlay.setVisible(true);
 		} else {
@@ -137,6 +142,16 @@ public class CartScreenController {
 			alert.setContentText("Media cannot be played.");
 			alert.showAndWait();
 		}
+	}
+	
+	@FXML
+	private void detailsButtonPressed(ActionEvent event) {
+		Media media = this.tblMedia.getSelectionModel().getSelectedItem();
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Detail infomation");
+		alert.setHeaderText("Viewing " + media.getTitle() + " detail infomation.");
+		alert.setContentText(media.getDetails());
+		alert.showAndWait();
 	}
 	
 	@FXML
