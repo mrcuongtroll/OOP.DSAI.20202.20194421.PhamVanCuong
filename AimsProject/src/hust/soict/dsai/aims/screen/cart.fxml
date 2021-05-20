@@ -87,6 +87,7 @@
                      <children>
                         <Button fx:id="btnPlay" mnemonicParsing="false" onAction="#playButtonPressed" text="Play" />
                         <Button fx:id="btnRemove" mnemonicParsing="false" onAction="#removeButtonPressed" text="Remove" />
+                        <Button fx:id="btnDetails" mnemonicParsing="false" onAction="#detailsButtonPressed" text="Details" />
                      </children>
                   </HBox>
                </children>
