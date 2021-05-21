@@ -99,24 +99,30 @@ public class MediaStore extends JPanel {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			cart.addMedia(media);
 			JPanel p = new JPanel();
 			JDialog d = new JDialog();
-			JLabel l = new JLabel(media.getTitle() + " added to cart");
-			p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
-			l.setAlignmentX(Component.CENTER_ALIGNMENT);
-			p.add(Box.createVerticalGlue());
-			p.add(l);
-			p.add(Box.createVerticalGlue());
-			d.add(p);
-			d.setSize(200,100);
-			Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-			int w = d.getSize().width;
-	        int h = d.getSize().height;
-	        int x = (dim.width - w) / 2;
-	        int y = (dim.height - h) / 2;
-	        d.setLocation(x,y);
-			d.setVisible(true);
+			JLabel l = new JLabel();
+			try {
+				cart.addMedia(media);
+				l.setText(media.getTitle() + " added to cart");
+			} catch (CartFullException ex) {
+				l.setText("The cart is full");
+			} finally {
+				p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
+				l.setAlignmentX(Component.CENTER_ALIGNMENT);
+				p.add(Box.createVerticalGlue());
+				p.add(l);
+				p.add(Box.createVerticalGlue());
+				d.add(p);
+				d.setSize(200,100);
+				Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+				int w = d.getSize().width;
+		        int h = d.getSize().height;
+		        int x = (dim.width - w) / 2;
+		        int y = (dim.height - h) / 2;
+		        d.setLocation(x,y);
+				d.setVisible(true);
+			}
 		}
 	}
 	

@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import hust.soict.dsai.aims.exception.AddToStoreException;
+import hust.soict.dsai.aims.exception.NotInStoreException;
 import hust.soict.dsai.aims.media.*;
 import java.time.LocalDate;
 
@@ -19,13 +20,11 @@ public class Store {
 		}
 	}
 	
-	public boolean removeMedia(Media medium) {
+	public void removeMedia(Media medium) throws NotInStoreException {
 		if (this.itemsInStore.remove(medium)) {
 			System.out.println(medium.getTitle() + " has been removed from the store.");
-			return true;
 		} else {
-			System.out.println(medium.getTitle() + " is not available at the store.");
-			return false;
+			throw new NotInStoreException(medium.getTitle() + " is not available at the store.");
 		}
 	}
 	

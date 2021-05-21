@@ -18,6 +18,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 
 public class CartScreenController {
@@ -78,16 +79,13 @@ public class CartScreenController {
 		
 		costLabel.setText(String.valueOf(this.cart.totalCost()));
 		
-		tblMedia.getSelectionModel().selectedItemProperty().addListener(
-				new ChangeListener<Media>() {
+		tblMedia.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Media>() {
 
 					@Override
 					public void changed(ObservableValue<? extends Media> observable, Media oldValue, Media newValue) {
-						if (newValue != null) {
-							updateButtonBar(newValue);
-						}
+						updateButtonBar(newValue);
 					}	
-				});
+		});
 		
 		tfFilter.textProperty().addListener(new ChangeListener<String> () {
 
@@ -100,12 +98,18 @@ public class CartScreenController {
 	}
 	
 	private void updateButtonBar(Media media) {
-		btnRemove.setVisible(true);
-		btnDetails.setVisible(true);
-		if (media instanceof Playable) {
-			btnPlay.setVisible(true);
-		} else {
+		if (media == null) {
+			btnRemove.setVisible(false);
+			btnDetails.setVisible(false);
 			btnPlay.setVisible(false);
+		} else {
+			btnRemove.setVisible(true);
+			btnDetails.setVisible(true);
+			if (media instanceof Playable) {
+				btnPlay.setVisible(true);
+			} else {
+				btnPlay.setVisible(false);
+			}
 		}
 	}
 	
@@ -126,7 +130,15 @@ public class CartScreenController {
 	@FXML
 	private void removeButtonPressed(ActionEvent event) {
 		Media media = tblMedia.getSelectionModel().getSelectedItem();
-		this.cart.removeMedia(media);
+		try {
+			this.cart.removeMedia(media);
+		} catch (NotInCartException e) {
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Notification");
+			alert.setHeaderText("Failed to remove");
+			alert.setContentText("Media not in cart");
+			alert.showAndWait();
+		}
 		costLabel.setText(String.valueOf(this.cart.totalCost()));
 	}
 	

@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 
 import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.exception.AddToStoreException;
+import hust.soict.dsai.aims.exception.ExistingAuthorException;
 import hust.soict.dsai.aims.media.Book;
 import hust.soict.dsai.aims.store.Store;
 import javafx.beans.value.ChangeListener;
@@ -74,7 +75,17 @@ public class AddBookToStoreScreenController extends AddItemToStoreScreenControll
 	protected void addBtnPressed() {
 		book = new Book(this.title, this.category, this.numPages, this.cost);
 		for (String author: authors) {
-			book.addAuthor(author);
+			try {
+				book.addAuthor(author);
+			} catch (ExistingAuthorException e) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Notification");
+				alert.setHeaderText("Failure");
+				alert.setContentText("List of authors contains duplicated names.");
+				alert.showAndWait();
+				tfAuthors.setText("");
+				return;
+			}
 		}
 		try {
 			store.addMedia(book);
