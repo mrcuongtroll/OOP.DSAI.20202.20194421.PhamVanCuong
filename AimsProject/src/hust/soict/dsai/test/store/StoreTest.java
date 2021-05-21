@@ -1,11 +1,10 @@
 package hust.soict.dsai.test.store;
-import hust.soict.dsai.aims.exception.AddToStoreException;
 import hust.soict.dsai.aims.media.*;
 import hust.soict.dsai.aims.store.Store;
 
 public class StoreTest {
 
-	public static void main(String[] args) throws AddToStoreException {
+	public static void main(String[] args) throws Exception {
 		//Create the store
 		Store myStore = new Store();
 

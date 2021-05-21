@@ -18,20 +18,20 @@ public class CompactDisc extends Disc {
 	private String artist;
 	private List<Track> tracks = new ArrayList<Track>();
 	
-	public void addTrack(Track track) throws ExistingTrackException {
+	public void addTrack(Track track) throws DupplicatedItemException {
 		if (this.tracks.contains(track)) {
-			throw new ExistingTrackException("The track " + track.getTitle() + " is already in the tracklist of " + this.getTitle());
+			throw new DupplicatedItemException("The track " + track.getTitle() + " is already in the tracklist of " + this.getTitle());
 		} else {
 			this.tracks.add(track);
 			System.out.println("The track " + track.getTitle() + " has been added to the tracklist of " + this.getTitle());
 		}
 	}
 	
-	public void removeTrack(Track track) throws NonExistingTrackException {
+	public void removeTrack(Track track) throws NonExistingItemException {
 		if (this.tracks.remove(track)) {
 			System.out.println("The track " + track.getTitle() + " has been removed from the tracklist of " + this.getTitle());
 		} else {
-			throw new NonExistingTrackException("The track " + track.getTitle() + " is not in the tracklist of " + this.getTitle());
+			throw new NonExistingItemException("The track " + track.getTitle() + " is not in the tracklist of " + this.getTitle());
 		}
 	}
 	

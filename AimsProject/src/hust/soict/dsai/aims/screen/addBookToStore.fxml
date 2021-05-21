@@ -17,8 +17,8 @@
                   <items>
                         <Menu mnemonicParsing="false" text="Update Store">
                           <items>
-                            <MenuItem mnemonicParsing="false" onAction="#addCDToStore" text="Add Book" />
-                              <MenuItem mnemonicParsing="false" text="Add CD" />
+                            <MenuItem mnemonicParsing="false" text="Add Book" />
+                              <MenuItem mnemonicParsing="false" onAction="#addCDToStore" text="Add CD" />
                               <MenuItem mnemonicParsing="false" onAction="#addDVDToStore" text="Add DVD" />
                           </items>
                         </Menu>

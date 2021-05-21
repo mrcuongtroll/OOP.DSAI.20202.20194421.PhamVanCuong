@@ -6,16 +6,13 @@ import java.util.Optional;
 import javax.swing.JFrame;
 
 import hust.soict.dsai.aims.cart.Cart;
-import hust.soict.dsai.aims.exception.AddToStoreException;
-import hust.soict.dsai.aims.exception.ExistingAuthorException;
+import hust.soict.dsai.aims.exception.*;
 import hust.soict.dsai.aims.media.Book;
 import hust.soict.dsai.aims.store.Store;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
@@ -77,7 +74,7 @@ public class AddBookToStoreScreenController extends AddItemToStoreScreenControll
 		for (String author: authors) {
 			try {
 				book.addAuthor(author);
-			} catch (ExistingAuthorException e) {
+			} catch (DupplicatedItemException e) {
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Notification");
 				alert.setHeaderText("Failure");
@@ -94,7 +91,7 @@ public class AddBookToStoreScreenController extends AddItemToStoreScreenControll
 			alert.setHeaderText("Success");
 			alert.setContentText(book.getTitle() + " has been added to the store");
 			alert.showAndWait();
-		} catch (AddToStoreException e) {
+		} catch (DupplicatedItemException e) {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Notification");
 			alert.setHeaderText("Failure");

@@ -3,7 +3,7 @@ package hust.soict.dsai.aims.screen;
 import javax.swing.JFrame;
 
 import hust.soict.dsai.aims.cart.Cart;
-import hust.soict.dsai.aims.exception.AddToStoreException;
+import hust.soict.dsai.aims.exception.*;
 import hust.soict.dsai.aims.media.*;
 import hust.soict.dsai.aims.store.Store;
 import javafx.beans.value.ChangeListener;
@@ -68,7 +68,7 @@ public class AddDVDToStoreScreenController extends AddItemToStoreScreenControlle
 			alert.setHeaderText("Success");
 			alert.setContentText(dvd.getTitle() + " has been added to the store");
 			alert.showAndWait();
-		} catch (AddToStoreException e) {
+		} catch (DupplicatedItemException e) {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Notification");
 			alert.setHeaderText("Failure");
