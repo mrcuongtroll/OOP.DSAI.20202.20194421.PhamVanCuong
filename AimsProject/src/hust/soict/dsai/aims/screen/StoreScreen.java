@@ -2,9 +2,7 @@ package hust.soict.dsai.aims.screen;
 
 import hust.soict.dsai.aims.store.*;
 import hust.soict.dsai.aims.cart.*;
-import hust.soict.dsai.aims.exception.AddToStoreException;
-import hust.soict.dsai.aims.exception.ExistingAuthorException;
-import hust.soict.dsai.aims.exception.ExistingTrackException;
+import hust.soict.dsai.aims.exception.*;
 import hust.soict.dsai.aims.media.*;
 
 import java.awt.BorderLayout;
@@ -33,7 +31,7 @@ public class StoreScreen extends JFrame {
 	private Store store;
 	private Cart cart;
 
-	public static void main(String[] args) throws AddToStoreException, ExistingAuthorException, ExistingTrackException {
+	public static void main(String[] args) throws Exception {
 		//Test
 		Store myStore = new Store();
 		Cart myCart = new Cart();
@@ -127,7 +125,7 @@ public class StoreScreen extends JFrame {
 		
 		JMenu smUpdateStore = new JMenu("Update Store");
 		JMenuItem addBook = new JMenuItem("Add Book");
-		addBook.addActionListener(new AddDVDListener());
+		addBook.addActionListener(new AddBookListener());
 		smUpdateStore.add(addBook);
 		JMenuItem addCD = new JMenuItem("Add CD");
 		addCD.addActionListener(new AddCDListener());

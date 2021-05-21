@@ -22,11 +22,11 @@ public class Cart {
 		}
 	}
 	
-	public void removeMedia(Media medium) throws NotInCartException {
+	public void removeMedia(Media medium) throws NonExistingItemException {
 		if (this.itemsOrdered.remove(medium)) {
 			System.out.println(medium.getTitle() + " has been removed from the cart.");
 		} else {
-			throw new NotInCartException(medium.getTitle() + " is not in the cart.");
+			throw new NonExistingItemException(medium.getTitle() + " is not in the cart.");
 		}
 	}
 	

@@ -1,10 +1,5 @@
 package hust.soict.dsai.test.cart;
 import hust.soict.dsai.aims.cart.Cart;
-import hust.soict.dsai.aims.exception.CartFullException;
-import hust.soict.dsai.aims.exception.ExistingAuthorException;
-import hust.soict.dsai.aims.exception.ExistingTrackException;
-import hust.soict.dsai.aims.exception.NonExistingTrackException;
-import hust.soict.dsai.aims.exception.NotInCartException;
 import hust.soict.dsai.aims.media.*;
 
 public class CartTest {

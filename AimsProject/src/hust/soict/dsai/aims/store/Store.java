@@ -2,17 +2,16 @@ package hust.soict.dsai.aims.store;
 import java.util.ArrayList;
 import java.util.List;
 
-import hust.soict.dsai.aims.exception.AddToStoreException;
-import hust.soict.dsai.aims.exception.NotInStoreException;
+import hust.soict.dsai.aims.exception.*;
 import hust.soict.dsai.aims.media.*;
 import java.time.LocalDate;
 
 public class Store {
 	private List<Media> itemsInStore = new ArrayList<Media>();
 
-	public void addMedia(Media medium) throws AddToStoreException {
+	public void addMedia(Media medium) throws DupplicatedItemException {
 		if (this.itemsInStore.contains(medium) || medium.getTitle() == null) {
-			throw new AddToStoreException();
+			throw new DupplicatedItemException();
 		} else {
 			medium.setDateAdded(LocalDate.now());
 			this.itemsInStore.add(medium);
@@ -20,11 +19,11 @@ public class Store {
 		}
 	}
 	
-	public void removeMedia(Media medium) throws NotInStoreException {
+	public void removeMedia(Media medium) throws NonExistingItemException {
 		if (this.itemsInStore.remove(medium)) {
 			System.out.println(medium.getTitle() + " has been removed from the store.");
 		} else {
-			throw new NotInStoreException(medium.getTitle() + " is not available at the store.");
+			throw new NonExistingItemException(medium.getTitle() + " is not available at the store.");
 		}
 	}
 	

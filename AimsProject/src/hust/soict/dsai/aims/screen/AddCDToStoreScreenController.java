@@ -6,8 +6,7 @@ import java.util.Optional;
 import javax.swing.JFrame;
 
 import hust.soict.dsai.aims.cart.Cart;
-import hust.soict.dsai.aims.exception.AddToStoreException;
-import hust.soict.dsai.aims.exception.ExistingTrackException;
+import hust.soict.dsai.aims.exception.*;
 import hust.soict.dsai.aims.media.CompactDisc;
 import hust.soict.dsai.aims.media.Track;
 import hust.soict.dsai.aims.store.Store;
@@ -128,7 +127,7 @@ public class AddCDToStoreScreenController extends AddItemToStoreScreenController
 		for (Track track: tracks) {
 			try {
 				cd.addTrack(track);
-			} catch (ExistingTrackException e) {
+			} catch (DupplicatedItemException e) {
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Notification");
 				alert.setHeaderText("Failure");
@@ -144,7 +143,7 @@ public class AddCDToStoreScreenController extends AddItemToStoreScreenController
 			alert.setHeaderText("Success");
 			alert.setContentText(cd.getTitle() + " has been added to the store");
 			alert.showAndWait();
-		} catch (AddToStoreException e) {
+		} catch (DupplicatedItemException e) {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Notification");
 			alert.setHeaderText("Failure");

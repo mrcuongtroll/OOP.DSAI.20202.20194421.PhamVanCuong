@@ -132,7 +132,7 @@ public class CartScreenController {
 		Media media = tblMedia.getSelectionModel().getSelectedItem();
 		try {
 			this.cart.removeMedia(media);
-		} catch (NotInCartException e) {
+		} catch (NonExistingItemException e) {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Notification");
 			alert.setHeaderText("Failed to remove");

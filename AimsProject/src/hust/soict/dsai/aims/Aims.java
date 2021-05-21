@@ -1,12 +1,6 @@
 package hust.soict.dsai.aims;
 
 import hust.soict.dsai.aims.cart.Cart;
-import hust.soict.dsai.aims.exception.AddToStoreException;
-import hust.soict.dsai.aims.exception.CartFullException;
-import hust.soict.dsai.aims.exception.ExistingAuthorException;
-import hust.soict.dsai.aims.exception.ExistingTrackException;
-import hust.soict.dsai.aims.exception.NotInCartException;
-import hust.soict.dsai.aims.exception.NotInStoreException;
 import hust.soict.dsai.aims.exception.PlayerException;
 import hust.soict.dsai.aims.store.Store;
 import hust.soict.dsai.aims.media.*;

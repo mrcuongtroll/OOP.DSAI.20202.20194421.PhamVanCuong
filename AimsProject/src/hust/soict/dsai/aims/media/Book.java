@@ -2,17 +2,16 @@ package hust.soict.dsai.aims.media;
 import java.util.ArrayList;
 import java.util.List;
 
-import hust.soict.dsai.aims.exception.ExistingAuthorException;
-import hust.soict.dsai.aims.exception.NonExistingAuthorException;
+import hust.soict.dsai.aims.exception.*;
 
 public class Book extends Media {
 	private int contentLength;
 	private List<String> authors = new ArrayList<String>();
 	
-	public void addAuthor(String authorName) throws ExistingAuthorException {
+	public void addAuthor(String authorName) throws DupplicatedItemException {
 		for (String name: this.authors) {
 			if (name.toLowerCase().equals(authorName.toLowerCase())) {
-				throw new ExistingAuthorException(name + " is already in the list of authors.");
+				throw new DupplicatedItemException(name + " is already in the list of authors.");
 			}
 		}
 		this.authors.add(authorName);
@@ -20,7 +19,7 @@ public class Book extends Media {
 	}
 	
 	
-	public void removeAuthor(String authorName) throws NonExistingAuthorException {
+	public void removeAuthor(String authorName) throws NonExistingItemException {
 		for (String name: this.authors) {
 			if (name.toLowerCase().equals(authorName.toLowerCase())) {
 				this.authors.remove(name);
@@ -28,7 +27,7 @@ public class Book extends Media {
 				return;
 			}
 		}
-		throw new NonExistingAuthorException(authorName + " is not in the list of authors.");
+		throw new NonExistingItemException(authorName + " is not in the list of authors.");
 	}
 	
 	public String getType() {
