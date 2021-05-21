@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 
 import hust.soict.dsai.aims.cart.Cart;
 import hust.soict.dsai.aims.exception.AddToStoreException;
+import hust.soict.dsai.aims.exception.ExistingTrackException;
 import hust.soict.dsai.aims.media.CompactDisc;
 import hust.soict.dsai.aims.media.Track;
 import hust.soict.dsai.aims.store.Store;
@@ -125,7 +126,16 @@ public class AddCDToStoreScreenController extends AddItemToStoreScreenController
 	protected void addBtnPressed() {
 		cd = new CompactDisc(this.title, this.category, this.artist, this.director, this.cost);
 		for (Track track: tracks) {
-			cd.addTrack(track);
+			try {
+				cd.addTrack(track);
+			} catch (ExistingTrackException e) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Notification");
+				alert.setHeaderText("Failure");
+				alert.setContentText("CD contains duplicated tracks");
+				alert.showAndWait();
+				tfTracks.setText("");
+			}
 		}
 		try {
 			store.addMedia(cd);

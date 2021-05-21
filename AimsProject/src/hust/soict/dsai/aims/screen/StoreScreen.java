@@ -3,6 +3,8 @@ package hust.soict.dsai.aims.screen;
 import hust.soict.dsai.aims.store.*;
 import hust.soict.dsai.aims.cart.*;
 import hust.soict.dsai.aims.exception.AddToStoreException;
+import hust.soict.dsai.aims.exception.ExistingAuthorException;
+import hust.soict.dsai.aims.exception.ExistingTrackException;
 import hust.soict.dsai.aims.media.*;
 
 import java.awt.BorderLayout;
@@ -31,7 +33,7 @@ public class StoreScreen extends JFrame {
 	private Store store;
 	private Cart cart;
 
-	public static void main(String[] args) throws AddToStoreException {
+	public static void main(String[] args) throws AddToStoreException, ExistingAuthorException, ExistingTrackException {
 		//Test
 		Store myStore = new Store();
 		Cart myCart = new Cart();
